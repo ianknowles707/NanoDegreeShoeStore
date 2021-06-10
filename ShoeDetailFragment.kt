@@ -5,8 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
+import androidx.lifecycle.observe
 import androidx.navigation.findNavController
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentShoeDetailBinding
@@ -33,7 +37,11 @@ class ShoeDetailFragment : Fragment() {
         )
 
         binding.shoeListViewModel = viewModel
+        binding.lifecycleOwner = this
 
+        viewModel.shoeList.observe(viewLifecycleOwner, Observer { newShoe ->
+            Toast.makeText(context, newShoe.toString(), Toast.LENGTH_LONG).show()
+        })
         cancelAction()
 
         return binding.root
