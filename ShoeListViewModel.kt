@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 
 class ShoeListViewModel : ViewModel() {
 
-    private lateinit var _shoeList: MutableLiveData<MutableList<Shoe>>
+    private var _shoeList: MutableLiveData<MutableList<Shoe>>()
 
     val shoeList: LiveData<MutableList<Shoe>>
         get() = _shoeList
@@ -15,11 +15,21 @@ class ShoeListViewModel : ViewModel() {
 
     init {
 
+        //Testing
+        val testShoe: Shoe = Shoe(
+            "RA II",
+            9.5,
+            "Vivobarefoot",
+            "Minimal"
+        )
+        _shoeList.value?.add(testShoe)
+        ///
 
     }
 
-    fun addNewShoe(shoe: Shoe){
+    fun addNewShoe(shoe: Shoe) {
 
+        _shoeList.value?.add(shoe)
     }
 
 
