@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.navigation.findNavController
 import com.udacity.shoestore.R
@@ -19,9 +20,6 @@ class ShoeDetailFragment : Fragment() {
 
     private lateinit var binding: FragmentShoeDetailBinding
 
-    //Add the shoeListViewModel and make it accessible to both Detail and ShoeList Fragments
-    //
-    //Need to fix as it doe snot seem to be working
     private val viewModel: ShoeListViewModel by activityViewModels()
 
     private lateinit var newShoe: Shoe
@@ -37,12 +35,10 @@ class ShoeDetailFragment : Fragment() {
             container,
             false
         )
+
         cancelAction()
 
-        //
-        //This next part is is not working - if left in it crashes the app
-        //
-        binding.shoeListViewModel = viewModel
+        //binding.shoeListViewModel = viewModel
 
         binding.lifecycleOwner = this
 
