@@ -20,6 +20,8 @@ class ShoeDetailFragment : Fragment() {
     private lateinit var binding: FragmentShoeDetailBinding
 
     //Add the shoeListViewModel and make it accessible to both Detail and ShoeList Fragments
+    //
+    //Need to fix as it doe snot seem to be working
     private val viewModel: ShoeListViewModel by activityViewModels()
 
     private lateinit var newShoe: Shoe
@@ -35,14 +37,14 @@ class ShoeDetailFragment : Fragment() {
             container,
             false
         )
-
-        binding.shoeListViewModel = viewModel
-        binding.lifecycleOwner = this
-
-        viewModel.shoeList.observe(viewLifecycleOwner, Observer { newShoe ->
-            Toast.makeText(context, newShoe.toString(), Toast.LENGTH_LONG).show()
-        })
         cancelAction()
+
+        //
+        //This next part is is not working - if left in it crashes the app
+        //
+        binding.shoeListViewModel = viewModel
+
+        binding.lifecycleOwner = this
 
         return binding.root
     }
