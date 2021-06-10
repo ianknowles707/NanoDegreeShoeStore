@@ -37,12 +37,30 @@ class ShoeDetailFragment : Fragment() {
         )
 
         cancelAction()
+        addShoe()
 
         //binding.shoeListViewModel = viewModel
 
         binding.lifecycleOwner = this
 
         return binding.root
+    }
+
+    private fun addShoe() {
+        binding.buttonTest.setOnClickListener {
+            val displayShoe = viewModel.shoeList.value?.elementAt(0)
+            if (displayShoe != null) {
+                Toast.makeText(
+                    context,
+                    "Name: ${displayShoe.name}" +
+                            "Company: ${displayShoe.company}" +
+                            "Size: ${displayShoe.size}" +
+                            "Description: ${displayShoe.description}",
+                    Toast.LENGTH_LONG
+                ).show()
+
+            }
+        }
     }
 
     private fun cancelAction() {
